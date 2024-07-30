@@ -1,66 +1,206 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Visão Geral
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e Vue.js no frontend. Ele inclui funcionalidades de CRUD para produtos e categorias, além de um sistema de autenticação utilizando JWT.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** Laravel 9.0 ou superior com PHP 8.0 ou superior
+- **Frontend:** Vue.js 3 com TypeScript, Vite como bundler
+- **Banco de Dados:** MySQL 8.0
+- **Servidor de Desenvolvimento:** XAMPP (opcional, mas recomendado)
 
-## Learning Laravel
+## Configuração do Ambiente de Desenvolvimento
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.0 ou superior
+- Composer
+- Node.js e npm/yarn
+- MySQL
+- XAMPP (opcional, mas recomendado)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Instalação
 
-## Laravel Sponsors
+1. Clone o repositório:
+   
+   ```bash
+   git clone https://github.com/MiguelAmoedo/api-produtos-laravel
+   cd nome-do-repositorio
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Configure o backend Laravel:
+   
+   ```bash
+   cd backend
+   composer install
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-### Premium Partners
+3. Configure o banco de dados no arquivo `.env` ou COPIE: `.env.example`!:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=dev
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-## Contributing
+4. Apague o cache das configurações:
+   
+   ```bash
+   php artisan config:cache
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Crie a tabela necessária ou aplique o comando abaixo:
+   
+   ```bash
+   php artisan make:migration add_dev_to_products_table
+   ```
 
-## Code of Conduct
+6. Execute as migrações:
+   
+   ```bash
+   php artisan migrate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. Inicie o servidor:
+   
+   ```bash
+   npm start
+   ```
 
-## Security Vulnerabilities
+## Rotas da API
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+A API está disponível na URL: [http://127.0.0.1:8000/api/](http://127.0.0.1:8000/api/)
 
-## License
+### Categorias
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Cadastrar Categoria:** `POST /categories`
+  - Cadastra uma nova categoria.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "xbox"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "name": "xbox",
+      "updated_at": "2024-07-30T14:49:19.000000Z",
+      "created_at": "2024-07-30T14:49:19.000000Z",
+      "id": 1
+    }
+    ```
+
+### Produtos
+
+- **Listar Produtos:** `GET /products`
+  - Lista os produtos com paginação.
+
+- **Cadastrar Produto:** `POST /products`
+  - Cadastra um novo produto.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "produto1",
+      "description": "produto top",
+      "price": "123",
+      "expiry_date": "2020-10-10",
+      "image": "url",
+      "category_id": 1
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "product": {
+        "name": "produto1",
+        "description": "produto top",
+        "price": "123",
+        "expiry_date": "2020-10-10",
+        "image": "url",
+        "category_id": 1,
+        "updated_at": "2024-07-30T14:53:10.000000Z",
+        "created_at": "2024-07-30T14:53:10.000000Z",
+        "id": 1,
+        "category": {
+          "id": 1,
+          "name": "xbox",
+          "created_at": "2024-07-30T14:49:19.000000Z",
+          "updated_at": "2024-07-30T14:49:19.000000Z"
+        }
+      }
+    }
+    ```
+
+- **Atualizar Produto:** `PUT /products/{id}`
+  - Atualiza um produto existente.
+
+- **Deletar Produto:** `DELETE /products/{id}`
+  - Deleta um produto existente.
+
+### Sistema de Autenticação (JWT)
+
+Utilizamos JWT para autenticação de usuários. As rotas são as seguintes:
+
+- **Registrar:** `POST /register`
+  - Registra um novo usuário.
+  - Exemplo de request:
+    ```json
+    {
+      "name": "marcos",
+      "email": "marcos@email.com",
+      "password": "password123",
+      "password_confirmation": "password123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "message": "Usuário cadastrado com sucesso.",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M",
+      "user": {
+        "id": 1,
+        "name": "marcos",
+        "email": "marcos@email.com",
+        "created_at": "2024-07-30T14:53:10.000000Z",
+        "updated_at": "2024-07-30T14:53:10.000000Z"
+      }
+    }
+    ```
+
+- **Login:** `POST /login`
+  - Autentica um usuário e retorna um token JWT.
+  - Exemplo de request:
+    ```json
+    {
+      "email": "marcos@email.com",
+      "password": "password123"
+    }
+    ```
+  - Exemplo de response:
+    ```json
+    {
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzIyMzUzMTUzLCJleHAiOjE3MjIzNTY3NTMsIm5iZiI6MTcyMjM1MzE1MywianRpIjoicWJ1QVJnckVJVVVFdG9ZcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JetS6cDWfoeztfoVe2NmCYPRgj4KJTKiKBPFKvtBW3M"
+    }
+    ```
+
+- **Logout:** `POST /logout`
+  - Realiza o logout do usuário autenticado (requer token JWT).
+
+- **Usuário Autenticado:** `GET /user`
+  - Retorna os dados do usuário autenticado (requer token JWT).
+
+## Considerações Finais
+
+Este projeto foi desenvolvido como um desafio, para proporcionar um sistema de autenticação seguro utilizando JWT. Sinta-se à vontade para contribuir e melhorar este projeto.
+
+---
+
+Este README cobre a configuração do ambiente de desenvolvimento, instalação das dependências, execução do servidor e as principais rotas da API, incluindo o sistema de autenticação JWT.

@@ -7,7 +7,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 ## Tecnologias Utilizadas
 
 - **Backend:** Laravel 9.0 ou superior com PHP 8.0 ou superior
-- **Frontend:** Vue.js 3 com TypeScript, Vite como bundler
+- **Frontend:** Vue.js 3 com TypeScript, Vite como bundler [*Link*](https://github.com/MiguelAmoedo/produtos-vue)
 - **Banco de Dados:** MySQL 8.0
 - **Servidor de Desenvolvimento:** XAMPP (opcional, mas recomendado)
 

@@ -19,7 +19,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 - Composer
 - Node.js e npm/yarn
 - MySQL
-- XAMPP (Necessário) 
+- XAMPP (Necessário!) 
 
 ### Instalação
 

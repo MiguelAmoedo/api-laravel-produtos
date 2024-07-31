@@ -19,7 +19,7 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 - Composer
 - Node.js e npm/yarn
 - MySQL
-- XAMPP 
+- XAMPP (Necessário) 
 
 ### Instalação
 
@@ -33,13 +33,11 @@ Este é um sistema de gestão de produtos desenvolvido com Laravel no backend e 
 2. Configure o backend Laravel:
    
    ```bash
-   cd backend
    composer install
    cp .env.example .env
-   php artisan key:generate
    ```
 
-3. Configure o banco de dados no arquivo `.env` ou COPIE: `.env.example`!:
+3. Configure o banco de dados no arquivo `.env` !:
 
    ```
    DB_CONNECTION=mysql
